@@ -4,4 +4,7 @@
 	%p
 		= post.comments.count
 		Comments
+		%p
+		= post.get_likes.size
+		Supporters
 = link_to "Create a new pledge", new_post_path
