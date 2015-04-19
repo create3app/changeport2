@@ -1,13 +1,15 @@
+
+
 #post_show {
 	padding-top: 2rem;
 }
 	.post_image_description {
-		width: 50%;
+		width: 100%;
 		float: left;
 		margin-right: 5%;
 	}
 .post_data {
-		width: 15%;
+		width: 100%;
 		float: left;
 }
 		.button {
@@ -31,12 +33,6 @@
 			text-decoration: none;
 			color: #969696;
 			margin: 0;
-	}
-	#random_post {
-		width: 30%;
-		margin-left: 5%; 
-		margin-top: -3.2rem;
-		float: left;
 	}
 		h3 {
 			font-size: 1rem;

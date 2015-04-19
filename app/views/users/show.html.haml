@@ -1,0 +1,12 @@
+%div 
+%h1= @user.name 
+%p= "is changing the world."
+= link_to "Follow"
+		
+- @posts.each do |post|
+	= post.title
+	= image_tag post.image.url(:small)
+	%br
+	= link_to time_ago_in_words(post.created_at), post_path(post)
+	%i.fa.fa-thumbs-o-up
+	=pluralize(post.get_upvotes.size, "Supporter")

@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.for(:sign_up) << :name
 		devise_parameter_sanitizer.for(:account_update) << :name
   end
+	
+	def show
+	@user = User.find(params[:id])
+  @tposts = @user.posts
+end
 end
