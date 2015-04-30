@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inspirations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Friend</th>
+      <th>Create</th>
+      <th>Destroy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inspirations.each do |inspiration| %>
+      <tr>
+        <td><%= inspiration.user_id %></td>
+        <td><%= inspiration.friend_id %></td>
+        <td><%= inspiration.create %></td>
+        <td><%= inspiration.destroy %></td>
+        <td><%= link_to 'Show', inspiration %></td>
+        <td><%= link_to 'Edit', edit_inspiration_path(inspiration) %></td>
+        <td><%= link_to 'Destroy', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inspiration', new_inspiration_path %>

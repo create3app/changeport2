@@ -1,12 +1,24 @@
 %div 
-%h1= @user.name 
-%p= "is changing the world."
-= link_to "Follow"
+	%h1= @user.name 
+	%p= "is changing the world."
+
+= link_to "Add Friend", inspirations_path(:friend_id => @user), :method => :post
+%h2 Friends
+%ul
+	- for inspiration in @user.inspirations
+		%li
+			= h inspiration.friend.username
+			(#{link_to "remove", inspiration, :method => :delete})
+%p= link_to "Find Friends", user_path
+%h2 Friended by Users
+%ul
+	- for user in @user.inverse_friends
+		%li= h user.username
 		
 - @posts.each do |post|
 	= post.title
 	= image_tag post.image.url(:small)
-	%br
-	= link_to time_ago_in_words(post.created_at), post_path(post)
-	%i.fa.fa-thumbs-o-up
-	=pluralize(post.get_upvotes.size, "Supporter")
+%br
+/= link_to time_ago_in_words(post.created_at), post_path(post)
+/%i.fa.fa-thumbs-o-up
+/= pluralize(post.get_upvotes.size, "Supporter")

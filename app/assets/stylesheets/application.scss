@@ -1,13 +1,10 @@
-
 /*
  *= require_self
  */
-* {
-font-family: roboto;
-}
+
 body {
 	font-family: "Proxima Nova";
-	font-weight: 100;
+	font-weight: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wrapper {
-	 width: 80%; 
+	width: 80%;
 	margin: 0 auto;
 }
 
@@ -29,16 +26,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button {
-	float: right;
-	max-width: 100px;
-	text-decoration: none;
 	border: 1px solid #9B9B9B;
-	padding: .7rem 2.5rem;
-	margin: 5px;
+	padding: .7rem 1.25rem;
 	border-radius: .3rem;
 	outline: none;
 	background: white;
-	color: #e37513;
+	color: #9B9B9B;
 }
 
 header {
@@ -49,8 +42,7 @@ header {
 		float: left;
 		font-size: 1.75rem;
 		a {
-			float: right;
-			color: #5831c1;
+			color: #333233;
 			text-decoration: none;
 			&:hover {
 				color: #50A7C7;
@@ -70,6 +62,3 @@ header {
 		}
 	}
 }
-
-@import 'home.scss';
-@import 'posts.scss';

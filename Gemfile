@@ -47,7 +47,8 @@ gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
 	#LB 10042015
 gem 'acts_as_votable', '~> 0.10.0'
-	#LB 14042015
-gem "acts_as_follower"
+gem 'ratyrate'
 end
 
+
+gem 'mocha', group: :test

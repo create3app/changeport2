@@ -18,14 +18,25 @@
 				%i.fa.fa-commets-o
 				= pluralize(@post.comments.count, "Comment")
 			- if @post.user == current_user
+				= link_to "Rate Pledge", edit_post_path(@post), class:"data"
+				= link_to "Mark Complete", complete_post_path(@post), class: "data"
 				= link_to "Edit", edit_post_path(@post), class: "data"
 				= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "This is permenant, are you sure you want to delete this post?" }, class: "data"
-
+				
+.row
+	.small-2.large-4.columns
+		= imdb_style_rating_for @post, current_user
+	%br/
+	.small-2.large-4.columns
+		- if current_user
+			Ease: #{rating_for @post, "Ease"}
+			%br/
+			Effectiveness: #{rating_for @post, "Effectiveness"}
+			
 #comments
 	%h2.comment_count= pluralize(@post.comments.count, "Comment")
 	- @comments.each do |comment|
 		.comment
 			%p.username= comment.user.name
 			%p.content= comment.content
-	
-	= render "comments/form"
+			= render "comments/form"

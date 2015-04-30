@@ -47,9 +47,8 @@ class PostsController < ApplicationController
 		@post.downvote_from current_user
 		redirect_to :back
 	end
-		
+	
 		private
-		
 		def find_post
 						@post = Post.find(params[:id])
 		end
