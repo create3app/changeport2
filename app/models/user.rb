@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :inspirations
 	has_many :friends, :through => :inspirations
-	has_many :inverse_inspirations, :class_name => "Friendship", :foreign_key => "friend_id"
-	has_many :inverse_friends, :through => :inverse_inspirations, :source => :user
 	
 	def show
   @user = User.find(params[:id])
