@@ -1,24 +1,36 @@
-%div 
-	%h1= @user.name 
-	%p= "is changing the world."
+%h3 About
+%b= @user.name 
+%p= "is changing the world."
+- unless @user == current_user
+    = follow_buttons(current_user, @user)
 
-/ = link_to "Add Friend", inspirations_path(:friend_id => @user), :method => :post
-/ %h2 Friends
-/ %ul
-/ 	- for inspiration in @user.inspirations
-/ 		%li
-/ 			= h inspiration.friend.username
-/ 			(#{link_to "remove", inspiration, :method => :delete})
-/ %p= link_to "Find Friends", user_path
-/ %h2 Friended by Users
-/ %ul
-/ 	- for user in @user.inverse_friends
-/ 		%li= h user.username
+%h3 People you are following
+- if @user.followees.empty?
+    %p You are following noone.
+- else
+    %ul
+        - @user.followees.each do |user|
+            %li= link_to user.name, user
+
+%h3 People who are following you
+- if @user.followers.empty?
+    %p Noone is following you.
+- else
+    %ul
+        - @user.followers.each do |user|
+            %li= link_to user.name, user
 		
-- @posts.each do |post|
-	= post.title
-	= image_tag post.image.url(:small)
-%br
-/= link_to time_ago_in_words(post.created_at), post_path(post)
-/%i.fa.fa-thumbs-o-up
-/= pluralize(post.get_upvotes.size, "Supporter")
+%h3 Posts
+- @user.posts.each do |post|
+    .post
+        #title
+            %b Title
+            = post.title
+        #description
+            %b Description
+            = post.description
+        #link
+            = link_to post.link, post.link
+        = image_tag post.image.url(:small)
+        %hr
+        %br

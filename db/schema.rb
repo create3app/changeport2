@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506085334) do
+ActiveRecord::Schema.define(version: 20150506165005) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20150506085334) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "followee_id"
+    t.integer "follower_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.string   "liker_type"

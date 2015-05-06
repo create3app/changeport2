@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     post '/rate' => 'rater#create', as: 'rate'
 
     devise_for :users
-	resources :users, only: :show
+	resources :users, only: [:index, :show] do 
+        get 'follow' => 'follows#create'
+        get 'unfollow' => 'follows#destroy'
+    end
 
 	resources :posts do
 		member do

@@ -1,0 +1,14 @@
+- @users.each do |user|
+    / if you dont want to see yourself in the list of users, comment out the below
+    / - if user.id == current_user.id
+    /     - next
+    .user
+        #name
+            %b Name:
+            = link_to user.name, user
+        #email
+            %b Email:
+            = user.email
+        = follow_buttons(current_user, user)
+    %hr
+    %br

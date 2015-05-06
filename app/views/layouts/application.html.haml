@@ -16,9 +16,9 @@
 		%nav 
 		-if user_signed_in?
 			= link_to "Settings", edit_user_registration_path, class:"button"
-			= link_to "Search Users", new_post_path, class:"button"
-			= link_to "Search Campaigns", new_post_path, class:"button"
-			= link_to "My Campaigns", new_post_path, class:"button"
+			= link_to "Search Users", users_path, class:"button"
+			= link_to "Search Campaigns", '#', class:"button"
+			= link_to "My Campaigns", '#', class:"button"
 			= link_to "Logout", destroy_user_session_path, class:"button"
 		- else
 			= link_to "Sign in", new_user_session_path, class: "button"
