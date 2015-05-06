@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :posts
 	has_many :comments
-	has_many :inspirations
-	has_many :friends, :through => :inspirations
 	
 	def show
   @user = User.find(params[:id])

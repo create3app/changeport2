@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :inspirations
-  resources :friendships
-  post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users
-		resources :users, only: [:show]
+    root 'posts#index'
+
+    post '/rate' => 'rater#create', as: 'rate'
+
+    devise_for :users
+	resources :users, only: :show
+
 	resources :posts do
 		member do
 			patch :complete
@@ -14,8 +16,7 @@ Rails.application.routes.draw do
 		end
 		resources :comments
 	end
-	root 'posts#index'
-	end
+end
 
 
 
