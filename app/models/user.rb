@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
     validates :name,                                                      presence: true
 
     def following? target_user
-        # binding.pry
         return self.followees.include?(target_user) ? true : false
     end
 end
