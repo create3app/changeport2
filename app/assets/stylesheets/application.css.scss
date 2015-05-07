@@ -1,5 +1,6 @@
 /*
 	*= require post
+	*= require 1100
  	*= require_self
  */
 
@@ -15,11 +16,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 100;
-}
-
-.wrapper {
-	width: 80%;
-	margin: 0 auto;
 }
 
 .clearfix:before, .clearfix:after {
@@ -40,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: .3rem;
 	outline: none;
 	font-size: 20px;
-	colour: #5831c1 bold;
+	color: #5831c1 bold;
 	background: fff;
 	text-decoration: none;
 
@@ -50,6 +46,8 @@ header {
 	width: 100%;
 	padding: 2rem 0;
 	background-color: #E37513;
+	overflow: hidden;
+
 	#logo {
 		float: left;
 		font-size: 2ems;

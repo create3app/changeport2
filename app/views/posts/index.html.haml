@@ -1,33 +1,35 @@
-- if user_signed_in?
-	%p#intro
-	Hello
-	= current_user.name
-	%br/
-	%span
-		Change the world, and be inspired by other. Social Media for Social Action.
-- else
-	%p#intro
-		Be Inspired.
-	%br/
-	%span 
-		Change the World
-%posts 
-- @posts.each do |post| 
-	.post_image
-	= link_to (image_tag post.image.url (:small)), post
-	.post_content
-		.title
-			%h2= link_to post.title, post
-	.data.clearfix
-		%p.username
-			Shared by
-			= post.user.name
-		%p.buttons
+.row
+	.threecol
+		- if user_signed_in?
+			%p#intro
+			Hello
+			= current_user.name
+			%br/
 			%span
-				%i.fa.fa-comments-o
-				= post.comments.count
-			%span
-				%i.fa.fa-thumbs-o-up
-				= post.get_likes.size
+				Change the world, and be inspired by other. Social Media for Social Action.
+		- else
+			%p#intro
+				Be Inspired.
+			%br/
+			%span 
+				Change the World
+	.ninecol.last
+		- @posts.each do |post| 
+			.post
+				.post_image
+				= link_to (image_tag post.image.url (:small)), post
+				.post_content
+					.title
+						%h2= link_to post.title, post
+					%p.username
+						Shared by
+						= post.user.name
+					%p.buttons
+						%span
+							%i.fa.fa-comments-o
+							= post.comments.count
+						%span
+							%i.fa.fa-thumbs-o-up
+							= post.get_likes.size
 			
 		

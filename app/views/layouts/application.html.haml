@@ -11,7 +11,7 @@
 	= csrf_meta_tags
 %body
 %header
-	.wrapper.clearfix
+	.container
 		#logo= link_to "Create3", root_path
 		%nav 
 		-if user_signed_in?
@@ -24,7 +24,7 @@
 		- else
 			= link_to "Sign in", new_user_session_path, :class => "button"
 			= link_to "Sign Up", new_user_registration_path, :class => "button"
-.wrapper
+.container
 	= render partial: 'shared/flash', format: [:html]
 	= yield
 
