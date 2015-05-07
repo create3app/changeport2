@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@comments =Comment.where(post_id: @post)
+		set_post
 	end
 		
 	def new
@@ -14,23 +14,22 @@ class PostsController < ApplicationController
 	end
 		
 	def create
-		set_post
 		@post = current_user.posts.build(post_params)
 		if @post.save 
-			redirect_to @post
+			redirect_to post_path(@post)
 		else 
 			render action: :new
 		end
 	end
-	
-	def edit
 
+	def edit
+		set_post
 	end
 		
 	def update
 		set_post
 		if @post.update(post_params)
-			redirect_to @post
+			redirect_to post_path(@post)
 		else
 			render action: :edit
 		end
@@ -61,6 +60,6 @@ class PostsController < ApplicationController
 	end
 			
 	def post_params
-		params.require(:post).permit(:title, :link, :description, :image)
+		params.require(:post).permit(:title, :link, :description, :image, :status)
 	end		
 end

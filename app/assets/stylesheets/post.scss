@@ -1,0 +1,18 @@
+.post
+{
+    .post_image_description
+    {
+        img
+        {
+            &.in_progress
+            {
+                border: 3px solid #E37513;
+            }
+
+            &.completed
+            {
+                border: 3px solid #5831C1;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-#post_show
+#post_show.post
 	%h1= @post.title
 	%p.username
 		Created by
@@ -7,7 +7,7 @@
 		= time_ago_in_words(@post.created_at)
 	.clearfix
 		.post_image_description
-			= image_tag @post.image.url(:small)
+			= image_tag @post.image.url(:small), :class => @post.status
 			.description= simple_format(@post.description)
 		.post_data
 			= link_to "More Info", @post.link, class: "button"
@@ -19,7 +19,8 @@
 				= pluralize(@post.comments.count, "Comment")
 			- if @post.user == current_user
 				= link_to "Rate Pledge", edit_post_path(@post), class:"data"
-				= link_to "Mark Complete", complete_post_path(@post), class: "data"
+				= link_to "Mark Complete", post_path(@post, post: { status: 'completed'}), method: :patch, class: "data" if @post.in_progress?
+				= link_to "Mark In Progress", post_path(@post, post: { status: 'in_progress'}), method: :patch, :class => 'data' if @post.completed?
 				= link_to "Edit", edit_post_path(@post), class: "data"
 				= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "This is permenant, are you sure you want to delete this post?" }, class: "data"
 				
@@ -35,7 +36,7 @@
 			
 #comments
 	%h2.comment_count= pluralize(@post.comments.count, "Comment")
-	- @comments.each do |comment|
+	- @post.comments.each do |comment|
 		.comment
 			%p.username= comment.user.name
 			%p.content= comment.content

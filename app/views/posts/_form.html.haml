@@ -1,7 +1,16 @@
-= simple_form_for @post do |f|
-	= f.input :image
-	= f.input :title
-	= f.input :link
-	= f.input :description
+= form_for @post do |f|
+    %div
+        = f.file_field :image
+    %div
+        = f.text_field :title
+    %div
+        = f.text_field :link
+    %div
+        = f.text_area :description
+    %div
+        %label In progress
+        = f.radio_button :status, 'in_progress', checked: true
+        %label Completed
+        = f.radio_button :status, 'completed'
 	
-	=f.button :submit
+    = f.submit :submit

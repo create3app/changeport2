@@ -3,6 +3,8 @@
 %p= "is changing the world."
 - unless @user == current_user
     = follow_buttons(current_user, @user)
+- else
+    = link_to 'New post', new_post_path, :class => 'btn'
 
 %h3 People you are following
 - if @user.followees.empty?
