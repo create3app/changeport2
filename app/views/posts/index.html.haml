@@ -1,5 +1,6 @@
 .row
 	.threecol
+		%b This is your first column containing user data.
 		- if user_signed_in?
 			%p#intro
 			Hello
@@ -13,7 +14,8 @@
 			%br/
 			%span 
 				Change the World
-	.ninecol.last
+	.sixcol
+		%b This is your second column with all the posts in the database.
 		- @posts.each do |post| 
 			.post
 				.post_image
@@ -31,5 +33,7 @@
 						%span
 							%i.fa.fa-thumbs-o-up
 							= post.get_likes.size
+	.threecol.last
+		%b This is your third column with no content.
 			
 		
