@@ -1,0 +1,14 @@
+@media screen and (max-width: 750px) 
+{
+    #columns 
+    { 
+        column-gap: 0px; 
+        -webkit-column-gap: 0px;
+        -moz-column-gap: 0px;
+
+        .post 
+        { 
+            width: 100%; 
+        }
+    }
+}
